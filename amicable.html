@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <title>Amicable Numbers</title> 
+    
+    <h1>Amicable Numbers</h1>
+    
+    <style>
+    
+    body{
+        
+        background-color: #87CEEB; 
+        font-family: Georgia; 
+    }
+
+    
+    
+    </style>
+
+    <script>
+    
+    function isAmicableNumber() {
+        
+        var num_one = document.getElementById("num_one").value;
+        var num_two = document.getElementById("num_two").value;
+        
+         var numberOneFactors = factorOutput(num_one);
+         var numberTwoFactors = factorOutput(num_two);
+        
+        if ((sum(numberOneFactors) == num_two) && (sum(numberTwoFactors) == num_one)){
+            
+            document.getElementById("Results").innerHTML = "The numbers: " + num_one + " and " + num_two + " are amicable";
+            
+        }else{
+            
+            document.getElementById("Results").innerHTML = "The numbers: " + num_one + " and " + num_two + " are not amicable";
+            
+        }
+        
+        document.getElementById("numberOneFactors").innerHTML = num_one + " factors: " + numberOneFactors;
+        document.getElementById("numberTwoFactors").innerHTML = num_two + " factors: " + numberTwoFactors;
+        
+        //Tested mode: 220, 284, 1, 3, 1184 1210, 5020, 5564
+    }
+        
+        
+
+        
+        function isAFactor(number, factor){
+            
+            if (number % factor == 0){
+                
+                return true; 
+                
+            }
+                return false; 
+            }   
+        
+
+        
+        function factorOutput(number){
+            
+            var factor = [];
+            
+            for (let i = 1; i < number; i++){
+                
+                if(isAFactor(number, i)) {
+                    
+                    factor.push(i); 
+                }
+                
+            }
+            return factor;     
+            
+        }
+        
+      function sum(number){
+          
+          var summation = 0; 
+          
+          for (let i = 0; i < number.length; i++){
+              
+                summation+=number[i]; 
+              
+          }
+          
+          return summation; 
+            
+      }
+      
+    </script>
+
+
+</head>
+
+<body>
+
+    
+    <div>
+        <form>
+            
+        <input type = "number" id = "num_one">
+        <input type = "number" id = "num_two">
+        <input type = "button" value = "Submit" onclick = "isAmicableNumber()">
+        
+    
+        </form>
+        
+    </div>
+  
+  <div>
+      
+      <p id = "Results"></p>
+      
+       </div>
+ 
+      
+      <div>
+          <p id = "numberOneFactors"></p>
+          <p id = "numberTwoFactors"></p> 
+          
+ </div>
+
+
+</body> 
+    
+</html>
